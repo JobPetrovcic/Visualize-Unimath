@@ -1,0 +1,19 @@
+name: Get latest release version
+on:
+  push:
+    branches:
+      - main
+jobs:
+  check-if-modified:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check-latest
+        id: check-latest
+        run: |
+          current_commit=$(curl -sL https://api.github.com/repos/JobPetrovcic/agda-unimath/commits | jq -r '.[0].sha')
+          echo $current_commit > last_commit.txt
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: last_commit
+          path: ./last_commit.txt
