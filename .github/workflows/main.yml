@@ -17,7 +17,7 @@ jobs:
       - name: check-latest
         id: check-latest
         run: |
-          current_commit=$(curl -sL https://api.github.com/repos/JobPetrovcic/agda-unimath/commits | jq -r '.[0].sha')
+          current_commit=$(curl -sL https://api.github.com/repos/Unimath/agda-unimath/commits | jq -r '.[0].sha')
           if [[ "$current_commit" == "$(cat last_commit.txt)" ]]
           then 
             value=false 
@@ -40,7 +40,7 @@ jobs:
         run: echo "hello"
       - uses: actions/checkout@v4
         with:
-          repository: JobPetrovcic/agda-unimath
+          repository: Unimath/agda-unimath
           ref: master
           path: mylib
       - uses: actions/checkout@v4
