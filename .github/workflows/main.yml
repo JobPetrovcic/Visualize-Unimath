@@ -26,7 +26,8 @@ jobs:
             value=true
           fi
           echo "$current_commit"
-          echo "$(cat last_commit.txt)"
+          ls
+          cat last_commit.txt
           echo "Is modifier: $value"
           echo "modified=$value" >> $GITHUB_OUTPUT
           echo $current_commit > last_commit.txt
