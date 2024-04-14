@@ -24,6 +24,7 @@ jobs:
           else
             value=true
           fi
+          echo "Is modifier: $value"
           echo "{modified}={$value}" >> $GITHUB_OUTPUT
           echo $current_commit > last_commit.txt
       - uses: stefanzweifel/git-auto-commit-action@v5
