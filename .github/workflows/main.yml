@@ -19,7 +19,7 @@ jobs:
         id: check-latest
         run:
           current_commit=$(curl -sL https://api.github.com/repos/JobPetrovcic/agda-unimath/commits | jq -r '.[0].sha')
-          echo "{modified}={$(if [ "$current_commit" = "$(cat last_commit.txt)" ]; then echo false; else echo true; fi)}" >> $GITHUB_OUTPUT
+          echo "{modified}={$(if [ "$current_commit" == "$(cat last_commit.txt)" ]; then echo false; else echo true; fi)}" >> $GITHUB_OUTPUT
           echo $current_commit > last_commit.txt
       - uses: stefanzweifel/git-auto-commit-action@v5
 
