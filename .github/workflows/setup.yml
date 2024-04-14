@@ -4,30 +4,44 @@ on:
     branches:
       - main
 jobs:
-  check-if-modified:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Get previous run ID
-        id: get_previous_run_id
-        run: |
-          PREVIOUS_RUN_ID=$(curl -s -X GET \
-            "https://api.github.com/repos/JobPetrovcic/Visualize-Unimath/actions/runs" | jq -r '.workflow_runs[1].id')
-          echo "last run id: $PREVIOUS_RUN_ID"
-          echo "{previous_run_id}={$PREVIOUS_RUN_ID}" >> $GITHUB_OUTPUT
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: last_commit
           repository: JobPetrovcic/Visualize-Unimath
-          run-id: ${{ steps.get_previous_run_id.outputs.previous_run_id }}
+          run-id: 8679628665
           path: .
       - name: check-latest
         id: check-latest
         run: |
           cat last_commit.txt
-          echo >> 1 > last_commit.txt
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: last_commit
-          path: ./last_commit.txt
+  #check-if-modified:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Get previous run ID
+  #      id: get_previous_run_id
+  #      run: |
+  #        PREVIOUS_RUN_ID=$(curl -s -X GET \
+  #          "https://api.github.com/repos/JobPetrovcic/Visualize-Unimath/actions/runs" | jq -r '.workflow_runs[1].id')
+  #        echo "last run id: $PREVIOUS_RUN_ID"
+  #        echo "{previous_run_id}={$PREVIOUS_RUN_ID}" >> $GITHUB_OUTPUT
+  #    - name: Download artifact
+  #      uses: actions/download-artifact@v4
+  #      with:
+  #        name: last_commit
+  #        repository: JobPetrovcic/Visualize-Unimath
+  #        run-id: ${{ steps.get_previous_run_id.outputs.previous_run_id }}
+  #        path: .
+  #    - name: check-latest
+  #      id: check-latest
+  #      run: |
+  #        cat last_commit.txt
+  #        echo >> 1 > last_commit.txt
+  #    - name: Upload Artifact
+  #      uses: actions/upload-artifact@v4
+  #      with:
+  #        name: last_commit
+  #        path: ./last_commit.txt
