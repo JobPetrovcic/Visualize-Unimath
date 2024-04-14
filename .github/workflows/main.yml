@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: check-if-modified
     steps:
-      - run: echo |${{needs.check-if-modified.outputs.modified}}|
+      - run: echo "ZACETEK${{needs.check-if-modified.outputs.modified}}KONEC"
   #check:
   #  name: Visualize library
   #  runs-on: ubuntu-latest
