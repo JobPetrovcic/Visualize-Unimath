@@ -17,11 +17,11 @@ jobs:
           ref: main
       - name: check-latest
         id: check-latest
-        run:
+        run: |
           current_commit=$(curl -sL https://api.github.com/repos/JobPetrovcic/agda-unimath/commits | jq -r '.[0].sha')
           if [[ "$current_commit" == "$(cat last_commit.txt)" ]]
             then value=false 
-          else 
+          else
             value=true
           fi
           echo "{modified}={$value}" >> $GITHUB_OUTPUT
