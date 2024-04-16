@@ -62,7 +62,6 @@ jobs:
         with:
           source-directory: "output"
           destination-github-username: "JobPetrovcic"
-          destination-repository-name: "Visualize-Unimath"
-          target-directory: src
+          destination-repository-name: "JobPetrovcic.github.io"
           user-email: job1.petrovcic@gmail.com
           target-branch: main
