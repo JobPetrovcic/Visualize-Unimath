@@ -1,7 +1,7 @@
 name: "Check and visualize"
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron:  '30 20 * * *'
 
 jobs:
   check-if-modified:
@@ -62,6 +62,7 @@ jobs:
         with:
           source-directory: "output"
           destination-github-username: "JobPetrovcic"
-          destination-repository-name: "JobPetrovcic.github.io"
+          destination-repository-name: "Visualize-Unimath"
+          target-directory: "src"
           user-email: job1.petrovcic@gmail.com
           target-branch: main
