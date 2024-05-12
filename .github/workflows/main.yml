@@ -1,5 +1,6 @@
 name: "Check and visualize"
 on:
+  push:
   schedule:
     - cron:  '30 7,19 * * *'
 
